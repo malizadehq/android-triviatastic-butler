@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:layout_centerHorizontal="true"
+    android:layout_gravity="center_horizontal"
+    android:background="@drawable/triviatasticbkgd"
+    android:orientation="vertical"
+    tools:context=".QuizQuestionActivity" >
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/questioncount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:text="@string/questionCount"
+            android:textColor="#ffffffff"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/coins"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:paddingRight="14dp"
+            android:paddingTop="2.75dp"
+            android:text="@string/coinCount"
+            android:textColor="#ff000000"
+            android:textSize="30sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="290dp"
+        android:layout_height="450dip"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingTop="50dp" >
+
+        <TextView
+            android:id="@+id/question"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingLeft="0dp"
+            android:paddingTop="0dp"
+            android:text="@string/testQuestion"
+            android:textColor="#ff000000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/answer1"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/quizbutton"
+            android:gravity="center"
+            android:text="answer1"
+            android:textColor="#ffffffff"
+            android:textSize="18sp"
+            android:onClick="onClick"
+            android:clickable="true" />
+
+        <TextView
+            android:id="@+id/answer2"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/quizbutton"
+            android:gravity="center"
+            android:text="answer2"
+            android:textColor="#ffffffff"
+            android:textSize="18sp"
+            android:onClick="onClick"
+            android:clickable="true" />
+
+        <TextView
+            android:id="@+id/answer3"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/quizbutton"
+            android:gravity="center"
+            android:text="answer3"
+            android:textColor="#ffffffff"
+            android:textSize="18sp"
+            android:onClick="onClick"
+            android:clickable="true" />
+
+        <TextView
+            android:id="@+id/answer4"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/quizbutton"
+            android:gravity="center"
+            android:text="answer4"
+            android:textColor="#ffffffff"
+            android:textSize="18sp"
+            android:onClick="onClick"
+            android:clickable="true" />
+  
+    </LinearLayout>
+
+</LinearLayout>

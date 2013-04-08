@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string name="app_name">triviatastic</string>
+    <string name="triviaTasticTitle">Triviatastic!</string>
+    <string name="beginText">"Let's Go!"</string>
+    <string name="pickQuizTitle">Pick a Quiz</string>
+    <string name="coinCount">0</string>
+    <string name="questionCount">Question 1 of 10</string>
+    <string name="testQuestion">Question Goes Here</string>
+</resources>
