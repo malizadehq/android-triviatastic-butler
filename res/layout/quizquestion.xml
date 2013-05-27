@@ -1,120 +1,254 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_alignParentTop="true"
-    android:layout_centerHorizontal="true"
-    android:layout_gravity="center_horizontal"
-    android:background="@drawable/triviatasticbkgd"
-    android:orientation="vertical"
-    tools:context=".QuizQuestionActivity" >
+    android:layout_height="match_parent" >
 
-    <RelativeLayout
+    <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/triviatasticbkgd"
+        android:orientation="vertical"
+        tools:context=".QuizQuestionActivity" >
+
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/questioncount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/questionCount"
+                android:textColor="#ffffffff"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/coins"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:paddingRight="14dp"
+                android:paddingTop="2.75dp"
+                android:text="@string/coinCount"
+                android:textColor="#ff000000"
+                android:textSize="30sp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/questionAndAnswers"
+            android:layout_width="290dp"
+            android:layout_height="450dip"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingTop="50dp"
+            android:visibility="visible" >
+
+            <TextView
+                android:id="@+id/question"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:text="@string/testQuestion"
+                android:textColor="#ff000000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/answer1"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/quizbutton"
+                android:clickable="true"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:text="answer1"
+                android:textColor="#ffffffff"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/answer2"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/quizbutton"
+                android:clickable="true"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:text="answer2"
+                android:textColor="#ffffffff"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/answer3"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/quizbutton"
+                android:clickable="true"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:text="answer3"
+                android:textColor="#ffffffff"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/answer4"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/quizbutton"
+                android:clickable="true"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:text="answer4"
+                android:textColor="#ffffffff"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/resultView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#88000000"
+        android:orientation="vertical"
+        android:visibility="gone" >
 
         <TextView
-            android:id="@+id/questioncount"
+            android:id="@+id/bigConfirmation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:paddingLeft="10dp"
-            android:paddingTop="10dp"
-            android:text="@string/questionCount"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="100dp"
+            android:padding="10dp"
+            android:text="@string/big_result_text"
+            android:textColor="#ffffffff"
+            android:textSize="55sp" />
+
+        <ImageView
+            android:id="@+id/bigCoin"
+            android:layout_width="match_parent"
+            android:layout_height="91dp"
+            android:src="@drawable/bigcoin"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/smallMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:padding="10dp"
+            android:text="@string/small_result_text"
+            android:textColor="#ffffffff"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/incorrectMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:padding="10dp"
+            android:text="@string/incorrect_result_text"
             android:textColor="#ffffffff"
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/coins"
+            android:id="@+id/correctionMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:paddingRight="14dp"
-            android:paddingTop="2.75dp"
-            android:text="@string/coinCount"
-            android:textColor="#ff000000"
-            android:textSize="30sp" />
-    </RelativeLayout>
-
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="290dp"
-        android:layout_height="450dip"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:paddingTop="50dp" >
-
-        <TextView
-            android:id="@+id/question"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:paddingLeft="0dp"
-            android:paddingTop="0dp"
-            android:text="@string/testQuestion"
-            android:textColor="#ff000000"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/answer1"
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/quizbutton"
-            android:gravity="center"
-            android:text="answer1"
-            android:textColor="#ffffffff"
-            android:textSize="18sp"
-            android:onClick="onClick"
-            android:clickable="true" />
-
-        <TextView
-            android:id="@+id/answer2"
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/quizbutton"
-            android:gravity="center"
-            android:text="answer2"
+            android:layout_marginTop="5dp"
+            android:padding="10dp"
+            android:text="@string/correct_answer"
             android:textColor="#ffffffff"
-            android:textSize="18sp"
-            android:onClick="onClick"
-            android:clickable="true" />
-
-        <TextView
-            android:id="@+id/answer3"
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/quizbutton"
-            android:gravity="center"
-            android:text="answer3"
-            android:textColor="#ffffffff"
-            android:textSize="18sp"
-            android:onClick="onClick"
-            android:clickable="true" />
-
-        <TextView
-            android:id="@+id/answer4"
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/quizbutton"
-            android:gravity="center"
-            android:text="answer4"
-            android:textColor="#ffffffff"
-            android:textSize="18sp"
-            android:onClick="onClick"
-            android:clickable="true" />
-  
+            android:textSize="28sp" />
     </LinearLayout>
+    
+    <RelativeLayout
+        android:id="@+id/shakeIndicator"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:background="@drawable/roundededgebox"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:shadowColor="#000000"
+        android:shadowDx="4"
+        android:shadowDy="4"
+        android:shadowRadius="3"
+        android:visibility="visible">
+        
+        <TextView
+            android:id="@+id/shaketext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="50/50"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30dp" />
+        
+        <ImageView
+            android:id="@+id/emptybox1"
+            android:layout_width="25dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/blankbox"
+            android:layout_marginRight="95dp" />
+        
+        <ImageView
+            android:id="@+id/emptybox2"
+            android:layout_width="25dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/blankbox"
+            android:layout_marginRight="40dp" />
+        
+        <ImageView
+            android:id="@+id/redcheck1"
+            android:layout_width="35dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/redcheck"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="10dp"
+            android:visibility="gone" />
+        
+        <ImageView
+            android:id="@+id/redcheck2"
+            android:layout_width="35dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/redcheck"
+            android:layout_marginRight="85dp"
+            android:layout_marginBottom="10dp"
+            android:visibility="gone" />
+        
+</RelativeLayout>
 
-</LinearLayout>
+    <include
+        android:id="@+id/endResults"
+        layout="@layout/finalresults"
+        android:visibility="gone" />
+
+</RelativeLayout>

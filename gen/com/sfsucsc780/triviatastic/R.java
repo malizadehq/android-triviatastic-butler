@@ -8,45 +8,113 @@
 package com.sfsucsc780.triviatastic;
 
 public final class R {
+    public static final class array {
+        public static final int quiztitle_array=0x7f050000;
+    }
     public static final class attr {
     }
     public static final class drawable {
-        public static final int icon=0x7f020000;
-        public static final int quizbutton=0x7f020001;
-        public static final int triviatasticbkgd=0x7f020002;
-        public static final int triviatastictitle=0x7f020003;
-        public static final int widebutton=0x7f020004;
+        public static final int appicon=0x7f020000;
+        public static final int backgroundwithbar=0x7f020001;
+        public static final int bigcoin=0x7f020002;
+        public static final int blankbox=0x7f020003;
+        public static final int icon=0x7f020004;
+        public static final int lock=0x7f020005;
+        public static final int quizbutton=0x7f020006;
+        public static final int redcheck=0x7f020007;
+        public static final int roundededgebox=0x7f020008;
+        public static final int roundededgebox_upsidedown=0x7f020009;
+        public static final int smallcoin=0x7f02000a;
+        public static final int triviatasticbkgd=0x7f02000b;
+        public static final int triviatasticbkgdland=0x7f02000c;
+        public static final int triviatastictitle=0x7f02000d;
+        public static final int widebutton=0x7f02000e;
     }
     public static final class id {
-        public static final int answer1=0x7f05000b;
-        public static final int answer2=0x7f05000c;
-        public static final int answer3=0x7f05000d;
-        public static final int answer4=0x7f05000e;
-        public static final int begin=0x7f05000f;
-        public static final int coins=0x7f050000;
-        public static final int getStarted=0x7f050001;
-        public static final int question=0x7f05000a;
-        public static final int questioncount=0x7f050009;
-        public static final int quizbutton1=0x7f050002;
-        public static final int quizbutton2=0x7f050003;
-        public static final int quizbutton3=0x7f050004;
-        public static final int quizbutton4=0x7f050005;
-        public static final int quizbutton5=0x7f050006;
-        public static final int quizbutton6=0x7f050007;
-        public static final int quizbutton7=0x7f050008;
+        public static final int answer1=0x7f06002c;
+        public static final int answer2=0x7f06002d;
+        public static final int answer3=0x7f06002e;
+        public static final int answer4=0x7f06002f;
+        public static final int backtomenu=0x7f060013;
+        public static final int begin=0x7f06003d;
+        public static final int bigCoin=0x7f060032;
+        public static final int bigConfirmation=0x7f060031;
+        public static final int big_submit_message=0x7f06000d;
+        public static final int coins=0x7f060014;
+        public static final int correct_field=0x7f060004;
+        public static final int correct_text=0x7f060005;
+        public static final int correctionMessage=0x7f060035;
+        public static final int createquiz=0x7f06003e;
+        public static final int emptybox1=0x7f060038;
+        public static final int emptybox2=0x7f060039;
+        public static final int endResults=0x7f06003c;
+        public static final int exactResult=0x7f060012;
+        public static final int finalResultsView=0x7f06000e;
+        public static final int getStarted=0x7f060015;
+        public static final int imageView1=0x7f06001b;
+        public static final int imageView2=0x7f06001f;
+        public static final int imageView3=0x7f060023;
+        public static final int imageView4=0x7f060027;
+        public static final int incorrectMessage=0x7f060034;
+        public static final int incorrect_field1=0x7f060006;
+        public static final int incorrect_text1=0x7f060007;
+        public static final int incorrect_text2=0x7f060008;
+        public static final int incorrect_text3=0x7f060009;
+        public static final int letterGrade=0x7f060010;
+        public static final int lockcost4=0x7f06001c;
+        public static final int lockcost5=0x7f060020;
+        public static final int lockcost6=0x7f060024;
+        public static final int lockcost7=0x7f060028;
+        public static final int lockoverlay4=0x7f06001a;
+        public static final int lockoverlay5=0x7f06001e;
+        public static final int lockoverlay6=0x7f060022;
+        public static final int lockoverlay7=0x7f060026;
+        public static final int question=0x7f06002b;
+        public static final int questionAndAnswers=0x7f06002a;
+        public static final int question_field=0x7f060002;
+        public static final int question_text=0x7f060003;
+        public static final int questioncount=0x7f060029;
+        public static final int quizbutton1=0x7f060016;
+        public static final int quizbutton2=0x7f060017;
+        public static final int quizbutton3=0x7f060018;
+        public static final int quizbutton4=0x7f060019;
+        public static final int quizbutton5=0x7f06001d;
+        public static final int quizbutton6=0x7f060021;
+        public static final int quizbutton7=0x7f060025;
+        public static final int quizcreatepopup=0x7f06000c;
+        public static final int redcheck1=0x7f06003a;
+        public static final int redcheck2=0x7f06003b;
+        public static final int resultView=0x7f060030;
+        public static final int resultsText=0x7f06000f;
+        public static final int shakeIndicator=0x7f060036;
+        public static final int shaketext=0x7f060037;
+        public static final int smallMessage=0x7f060033;
+        public static final int spinner1=0x7f060001;
+        public static final int submit_popup=0x7f06000b;
+        public static final int submit_question=0x7f06000a;
+        public static final int title=0x7f060000;
+        public static final int youAnswered=0x7f060011;
     }
     public static final class layout {
-        public static final int pickquiz=0x7f030000;
-        public static final int quizquestion=0x7f030001;
-        public static final int quizsplash=0x7f030002;
-        public static final int title=0x7f030003;
+        public static final int createquiz=0x7f030000;
+        public static final int createquizpopup=0x7f030001;
+        public static final int finalresults=0x7f030002;
+        public static final int pickquiz=0x7f030003;
+        public static final int quizquestion=0x7f030004;
+        public static final int quizsplash=0x7f030005;
+        public static final int title=0x7f030006;
     }
     public static final class string {
         public static final int app_name=0x7f040000;
         public static final int beginText=0x7f040002;
+        public static final int big_result_text=0x7f040007;
         public static final int coinCount=0x7f040004;
+        public static final int correct_answer=0x7f04000a;
+        public static final int incorrect_result_text=0x7f040009;
         public static final int pickQuizTitle=0x7f040003;
+        public static final int pick_category=0x7f04000b;
         public static final int questionCount=0x7f040005;
+        public static final int small_result_text=0x7f040008;
         public static final int testQuestion=0x7f040006;
         public static final int triviaTasticTitle=0x7f040001;
     }

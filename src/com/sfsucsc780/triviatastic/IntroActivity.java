@@ -23,6 +23,9 @@ public class IntroActivity extends Activity {
 
 		View beginButton = findViewById(R.id.begin);
 		((TextView) beginButton).setTypeface(tfFancy);
+		
+		View createButton = findViewById(R.id.createquiz);
+		((TextView) createButton).setTypeface(tfFancy);
 		// End of fancy font code
 
 		// copy database from assets into filesystem where it can be utilized.
@@ -55,6 +58,14 @@ public class IntroActivity extends Activity {
 
 		// Start quiz-selection activity
 		Intent intent = new Intent(this, PickQuizActivity.class);
+
+		startActivityForResult(intent, 0);
+	}
+	
+	public void onClickCreate(View v) {
+
+		// Start quiz-creation activity
+		Intent intent = new Intent(this, CreateQuizActivity.class);
 
 		startActivityForResult(intent, 0);
 	}

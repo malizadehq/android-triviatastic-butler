@@ -5,7 +5,17 @@
     <string name="triviaTasticTitle">Triviatastic!</string>
     <string name="beginText">"Let's Go!"</string>
     <string name="pickQuizTitle">Pick a Quiz</string>
-    <string name="coinCount">0</string>
+    <string name="coinCount">99</string>
     <string name="questionCount">Question 1 of 10</string>
     <string name="testQuestion">Question Goes Here</string>
+    <string name="big_result_text">Sorry!</string>
+    <string name="small_result_text">You answered incorrectly.</string>
+    <string name="incorrect_result_text">The correct answer:</string>
+    <string name="correct_answer">ANSWER</string>
+    <string name="pick_category">Pick Category</string>
+    
+    <string-array name="quiztitle_array">
+        <item>Geography</item>
+        <item>Sports</item>
+    </string-array>
 </resources>

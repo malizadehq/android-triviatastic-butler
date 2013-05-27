@@ -1,0 +1,87 @@
+ <LinearLayout
+    	xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/finalResultsView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="visible" >
+        
+        <TextView
+                android:id="@+id/resultsText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Results:"
+                android:textColor="#ff1ebdff"
+                android:shadowColor="#000000"
+                android:shadowDx="4"
+                android:shadowDy="4"
+                android:shadowRadius="3"
+                android:textSize="55sp"
+                android:layout_marginTop="45dp"
+                android:padding="5dp" />
+        <TextView
+                android:id="@+id/letterGrade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="A+"
+                android:textColor="#fff8ed0a"
+                android:textSize="115sp"
+                android:layout_marginTop="0dp"
+                android:padding="0dp"
+                android:layout_marginBottom="0dp" />
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#88000000" >
+
+        <TextView
+                android:id="@+id/youAnswered"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="You Correctly Answered"
+                android:textColor="#ffffffff"
+                android:textSize="27sp"
+                android:layout_marginTop="5dp"
+                android:padding="0dp" />
+        
+        <TextView
+                android:id="@+id/exactResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="17 out of 20"
+                android:textColor="#ffffffff"
+                android:textSize="50sp"
+                android:layout_marginTop="2dp"
+                android:padding="0dp" />
+        </LinearLayout>
+        
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+         <TextView
+                android:id="@+id/backtomenu"
+                android:layout_width="220dp"
+                android:layout_height="65dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/quizbutton"
+                android:clickable="true"
+                android:gravity="center"
+                android:onClick="backToMenu"
+                android:text="Back to Menu"
+                android:textColor="#ffffffff"
+                android:textSize="18sp"
+                android:layout_alignParentBottom="true"
+            	android:layout_centerHorizontal="true"/>
+         </RelativeLayout>
+        
+        
+        
+    </LinearLayout>

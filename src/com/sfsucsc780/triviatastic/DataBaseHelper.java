@@ -4,6 +4,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -78,7 +83,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 		try {
 			String myPath = DB_PATH + DB_NAME;
 			checkDB = SQLiteDatabase.openDatabase(myPath, null,
-					SQLiteDatabase.OPEN_READONLY);
+					SQLiteDatabase.OPEN_READWRITE);
 
 		} catch (SQLiteException e) {
 
@@ -92,6 +97,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
 		}
 
+		// ternary return statement to return true or false if database exists
 		return checkDB != null ? true : false;
 	}
 
@@ -130,7 +136,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 		// Open the database
 		String myPath = DB_PATH + DB_NAME;
 		myDataBase = SQLiteDatabase.openDatabase(myPath, null,
-				SQLiteDatabase.OPEN_READONLY);
+				SQLiteDatabase.OPEN_READWRITE);
 
 	}
 
@@ -160,29 +166,27 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 	// be easy
 	// to you to create adapters for your views.
 
-	 public Cursor getQuestionsFromQuizID(int quizID){
-		 
-		 Integer quiz = new Integer(quizID);
-	
-		 return myDataBase.rawQuery("select * from Questions where quizID ="+quiz.toString(), null );
-	
-	 }
-	 
-	 public Cursor getAnswersFromQuestionID(int questionID, int quizID){
-		 
-		 Integer question = new Integer(questionID);
-		 Integer quiz = new Integer(quizID);
-		 
-		 return myDataBase.rawQuery("select * from Answers where questionID = "+question.toString()+" and quizID = "+quiz.toString(), null );
-	 }
-	 
-	public Boolean isAnswerCorrect(int answerID) {
+	public Cursor getQuestionsFromQuizID(Integer quizID) {
 
-		Integer answer = new Integer(answerID);
+		return myDataBase.rawQuery("select * from Questions where quizID ="
+				+ quizID.toString(), null);
+
+	}
+
+	public Cursor getAnswersFromQuestionID(Integer questionID, Integer quizID) {
+
+		return myDataBase.rawQuery("select * from Answers where questionID = "
+				+ questionID.toString() + " and quizID = " + quizID.toString(),
+				null);
+
+	}
+
+	public Boolean isAnswerCorrect(Integer answerID) {
+
 		int correctBit;
 
 		Cursor cursor = myDataBase.rawQuery("select * from Answers where _id ="
-				+ answer.toString(), null);
+				+ answerID.toString(), null);
 
 		cursor.moveToFirst();
 		correctBit = cursor.getInt(3);
@@ -194,17 +198,105 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 		}
 
 	}
-	
-	public int getQuestionCountByQuizID(int quizID){
-		
-		Integer quiz = new Integer(quizID);
-		
-		Cursor cursor = myDataBase.rawQuery("select * from Questions where quizID ="+quiz.toString(), null);
-		
+
+	public int getQuestionCountByQuizID(Integer quizID) {
+
+		Cursor cursor = myDataBase.rawQuery(
+				"select * from Questions where quizID =" + quizID.toString(),
+				null);
+
 		cursor.moveToFirst();
-		
+
 		return cursor.getCount();
+
+	}
+
+	public String getCorrectAnswerText(Integer questionID, Integer quizID) {
+
+		String answerString;
+
+		Cursor cursor = myDataBase.rawQuery(
+				"select * from Answers where questionID ="
+						+ questionID.toString() + " and quizID ="
+						+ quizID.toString() + " and isCorrect = 1", null);
+
+		cursor.moveToFirst();
+
+		answerString = cursor.getString(4);
+
+		return answerString;
+
+	}
+
+	public void insertQuestion(int quizID, String questionText,
+			String correctAnswer, String wrongAnswer1, String wrongAnswer2,
+			String wrongAnswer3) {
+
+		// Get the total number of questions so we know which questionID to
+		// assign
+		int questionCount = getQuestionCountByQuizID(quizID);
+
+		// increment to the next questionID
+		int questionID = questionCount+1;
+
+		//next few blocks create ContentValues maps for insertion into sqlite database
 		
+		//QUESTION TABLE, setup the new question ContentValues
+		ContentValues questionValues = new ContentValues();
+		questionValues.put("quizID", quizID);
+		questionValues.put("QuestionText", questionText);
+		
+		//go ahead and insert new question
+		myDataBase.insert("Questions", null, questionValues);
+
+		//ANSWERS TABLE, correct answer
+		ContentValues correctAnsValues = new ContentValues();
+		correctAnsValues.put("quizID", quizID);
+		correctAnsValues.put("questionID", questionID);
+		correctAnsValues.put("isCorrect", 1);
+		correctAnsValues.put("AnswerText", correctAnswer);
+
+		//ANSWERS TABLE, incorrect answer 1
+		ContentValues wrongAnswer1Values = new ContentValues();
+		wrongAnswer1Values.put("quizID", quizID);
+		wrongAnswer1Values.put("questionID", questionID);
+		wrongAnswer1Values.put("isCorrect", 0);
+		wrongAnswer1Values.put("AnswerText", wrongAnswer1);
+
+		//ANSWERS TABLE, incorrect answer 2
+		ContentValues wrongAnswer2Values = new ContentValues();
+		wrongAnswer2Values.put("quizID", quizID);
+		wrongAnswer2Values.put("questionID", questionID);
+		wrongAnswer2Values.put("isCorrect", 0);
+		wrongAnswer2Values.put("AnswerText", wrongAnswer2);
+
+		//ANSWERS TABLE, incorrect answer 3
+		ContentValues wrongAnswer3Values = new ContentValues();
+		wrongAnswer3Values.put("quizID", quizID);
+		wrongAnswer3Values.put("questionID", questionID);
+		wrongAnswer3Values.put("isCorrect", 0);
+		wrongAnswer3Values.put("AnswerText", wrongAnswer3);
+
+		//create a list of four integers from 1 to 4
+		ArrayList<Integer> shuffler = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4));
+		
+		//shuffle the list into a random order
+		Collections.shuffle(shuffler);
+
+		//iterate through the list, randomly inserting each answer in a unique order
+		for (int i = 0; i < 4; i++) {
+
+			if (shuffler.get(i) == 1) 
+				myDataBase.insert("Answers", null, correctAnsValues);
+			else if (shuffler.get(i) == 2) 
+				myDataBase.insert("Answers", null, wrongAnswer1Values);
+			else if (shuffler.get(i) == 3)
+				myDataBase.insert("Answers", null, wrongAnswer2Values);
+			else if (shuffler.get(i) == 4)
+				myDataBase.insert("Answers", null, wrongAnswer3Values);
+				
+		}
+
 	}
 
 }
