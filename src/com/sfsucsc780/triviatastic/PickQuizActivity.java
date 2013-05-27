@@ -1,3 +1,10 @@
+/*
+ * This activity is the quiz selection screen. 
+ * It is responsible for launching the correct quiz by populating
+ * the appropriate data into an intent via .putExtra()
+ * and the handling of unlocking quizzes.
+ * 
+ */
 package com.sfsucsc780.triviatastic;
 
 import android.app.Activity;
@@ -58,6 +65,7 @@ public class PickQuizActivity extends Activity {
         	((TextView) quizTitle).setTypeface(tfFancy);
         }
         
+        //set fonts for coin and lock numbers
         View coins = findViewById(R.id.coins);
         ((TextView) coins).setTypeface(tfBlocky);
         

@@ -1,3 +1,11 @@
+/*
+ * I have used this code to handle shake event detection. I am not the author.
+ * 
+ * A working copy was found here, but I have found it throughout the web on many web sites.
+ * https://code.google.com/p/voice-receptor/source/browse/trunk/motorboat/src/dnd/motorboat/shake/ShakeEventListener.java?spec=svn4&r=4
+ */
+
+
 package com.sfsucsc780.triviatastic;
 
 import android.hardware.Sensor;

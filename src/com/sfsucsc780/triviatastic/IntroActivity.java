@@ -1,3 +1,9 @@
+/*
+ * This activity class is simply the intro screen seen
+ * when launching the app. It can either redirect the user
+ * to the quiz selection activity, or the question creation
+ * activity.
+ */
 package com.sfsucsc780.triviatastic;
 
 import java.io.IOException;

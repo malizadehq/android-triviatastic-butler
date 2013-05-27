@@ -19,7 +19,7 @@ public class CreateQuizActivity extends Activity {
 
 	private DataBaseHelper myDbHelper;
 
-	//refrences to EditFields used throughout activity
+	//ref to EditFields used throughout activity
 	private EditText questionText;
 	private EditText correctAnswerText;
 	private EditText incorrectAnswer1Text;
@@ -43,13 +43,15 @@ public class CreateQuizActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.createquiz);
 		
+		//collect short system animation time
 		mShortAnimationDuration = getResources().getInteger(
 				android.R.integer.config_shortAnimTime);
 
+		//Instantiate and open database
 		myDbHelper = new DataBaseHelper(this);
-
 		myDbHelper.openDataBase();
-
+		
+		//collecting IDs for later use
 		questionText = (EditText) findViewById(R.id.question_text);
 		correctAnswerText = (EditText) findViewById(R.id.correct_text);
 		incorrectAnswer1Text = (EditText) findViewById(R.id.incorrect_text1);
@@ -58,6 +60,7 @@ public class CreateQuizActivity extends Activity {
 		spinner = (Spinner) findViewById(R.id.spinner1);
 		submitPopup = (View) findViewById(R.id.submit_popup);
 		
+		//setup a few fonts
 		Typeface tfFancy = Typeface.createFromAsset(this.getAssets(),
                 "fonts/Molle-Regular.ttf");
 		
@@ -90,15 +93,17 @@ public class CreateQuizActivity extends Activity {
 		incorrectAnswer2Text.setText("");
 		incorrectAnswer3Text.setText("");
 		
+		//Animate pop-up to confirm the addtion of the new question
 		submitPopup.setAlpha(0f);
 		submitPopup.setVisibility(View.VISIBLE);
 		
+		//begin animation
 		submitPopup.animate()
         .alpha(1f)
         .setDuration(mShortAnimationDuration)
         .setListener(null);
 		
-		
+		//use a timer + handler to delay hiding the popup for 2 seconds
 		TimerTask hideConfirmation = new TimerTask() {
 			public void run() {
 				
@@ -108,6 +113,7 @@ public class CreateQuizActivity extends Activity {
 			}
 		};
 
+		//schedule the timer to execute TimerTask in 2 seconds
 		Timer timer = new Timer();
 		timer.schedule(hideConfirmation, 2000);
 	}

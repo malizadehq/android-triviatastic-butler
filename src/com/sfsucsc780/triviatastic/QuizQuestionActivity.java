@@ -1,3 +1,19 @@
+/*
+ * This activity is the core of the application.
+ * 
+ * A quiz is loaded based on the .putExtra() that is received from
+ * the quiz-selection activity's intent. The activity iterates through all
+ * the questions of the selected quiz until the end is reached. 
+ * Once the end is reached, a result is displayed. An "exit" button
+ * is shown, which kills this activity, and returns to the quiz-selection
+ * activity.
+ * 
+ * Each correct question yields the player 1 coin. During this activity
+ * the player gets two phone-shake activated 50/50 lifelines.
+ * 
+ * A majority of the code is UI manipulation and database accessing.
+ * 
+ */
 package com.sfsucsc780.triviatastic;
 
 import java.util.Timer;
@@ -121,6 +137,7 @@ public class QuizQuestionActivity extends Activity {
 		setContentView(R.layout.quizquestion);
 		
 		//set the questions and answers as gone
+		//issue with rotation of screen once quiz is finished (some lag, using this as a quick-fix)
 		((View) findViewById(R.id.questionAndAnswers)).setVisibility(View.GONE);
 		
 		//used if user changes orientation after final result has been displayed.
@@ -152,7 +169,7 @@ public class QuizQuestionActivity extends Activity {
 							//record how many shakes have been detected.
 							shakesDetected++;
 							
-							//update shake indicator
+							//makes sure the UI reflects how many shakes have been used
 							updateShakeIndicator();
 							
 							//indicate that the current question has had a shake-lifeline
@@ -211,6 +228,8 @@ public class QuizQuestionActivity extends Activity {
 		// end of typeface code
 	}
 	
+	//This allows screen rotation to happen without losing critical information
+	//about the current state of the quiz
 	protected void onSaveInstanceState(Bundle savedInstanceState) {
 		  super.onSaveInstanceState(savedInstanceState);
 		  savedInstanceState.putInt("currentQuestion", curQuestion);
@@ -455,7 +474,10 @@ public class QuizQuestionActivity extends Activity {
 
 	}
 	
+	//When a shake event is detected, this hides the first two incorrect answers, starting from the bottom answer.
 	void hideAnswers(){
+		
+		//counter used to make sure we only hide 2/4 answers
 		int hiddenCount = 0;
 
 			if (!myDbHelper.isAnswerCorrect(answerID4)) {
@@ -538,6 +560,7 @@ public class QuizQuestionActivity extends Activity {
 		questionButtons = findViewById(R.id.questionAndAnswers);
 		finalResults = findViewById(R.id.endResults);
 		
+		//handles animation of the final result and question/answer views
 		if (!hasQuizBeenFinished) {
 			questionButtons.animate().alpha(0f)
 					.setDuration(mShortAnimationDuration)
@@ -573,6 +596,8 @@ public class QuizQuestionActivity extends Activity {
 		finish();
 	}
 	
+	//updates the UI to reflect how many shakes have been used.
+	//Gets called during onCreate() or if a shake event is detected.
 	private void updateShakeIndicator(){
 		
 		View check1 = findViewById(R.id.redcheck1);

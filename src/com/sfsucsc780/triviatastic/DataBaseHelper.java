@@ -1,3 +1,11 @@
+/*
+ * This database helper class is heavily based on a tutorial found online.
+ * http://www.reigndesign.com/blog/using-your-own-sqlite-database-in-android-applications/
+ * 
+ * I have utilized their basic open/copy/close operations
+ * The content access and adapters are original code, specific to triviatastic's database structure
+ * 
+ */
 package com.sfsucsc780.triviatastic;
 
 import java.io.FileOutputStream;
@@ -160,12 +168,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
 	}
 
-	// Add your public helper methods to access and get content from the
-	// database.
-	// You could return cursors by doing "return myDataBase.query(....)" so it'd
-	// be easy
-	// to you to create adapters for your views.
+	//Public helper method begin here
+	//These are specific to triviatastic's database structure
 
+	//returns a cursor containing all questions from a particular quizID
 	public Cursor getQuestionsFromQuizID(Integer quizID) {
 
 		return myDataBase.rawQuery("select * from Questions where quizID ="
@@ -173,6 +179,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
 	}
 
+	//returns a cursor containing all the answers for a specific question.
+	//due to short-sighted database schema, both questionID AND quizID are needed.
 	public Cursor getAnswersFromQuestionID(Integer questionID, Integer quizID) {
 
 		return myDataBase.rawQuery("select * from Answers where questionID = "
@@ -181,6 +189,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
 	}
 
+	//simple public method to evaluate if a question is correct.
 	public Boolean isAnswerCorrect(Integer answerID) {
 
 		int correctBit;
@@ -199,6 +208,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
 	}
 
+	//simple convenience method to return the length of a quiz
 	public int getQuestionCountByQuizID(Integer quizID) {
 
 		Cursor cursor = myDataBase.rawQuery(
@@ -211,6 +221,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
 	}
 
+	//convenience method to return the String of the correct answer.
+	//this is used for the displaying of the correct answer if the player
+	//selects the wrong answer.
 	public String getCorrectAnswerText(Integer questionID, Integer quizID) {
 
 		String answerString;
@@ -228,6 +241,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
 	}
 
+	//Allows user to insert a question into the database
+	//currently, it simple adds a question onto an existing quiz in the database.
 	public void insertQuestion(int quizID, String questionText,
 			String correctAnswer, String wrongAnswer1, String wrongAnswer2,
 			String wrongAnswer3) {
